@@ -1,1 +1,216 @@
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mineral water — Buyurtma</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      background: #f1f7fb; color: #183247;
+    }
+    header {
+      background: #087ac1; color: white;
+      padding: 22px 18px; text-align: center;
+      border-radius: 0 0 22px 22px;
+    }
+    header h1 { margin: 0 0 8px; }
+    main { max-width: 520px; margin: auto; padding: 18px; }
+    .lang { text-align: right; margin-bottom: 12px; }
+    button, select, input {
+      font: inherit; border-radius: 10px; padding: 12px;
+    }
+    button {
+      border: 0; background: #087ac1; color: white;
+      cursor: pointer; font-weight: bold;
+    }
+    .lang button { padding: 8px 14px; background: #d9eaf5; color: #183247; }
+    .card {
+      background: white; padding: 18px; border-radius: 16px;
+      margin: 14px 0; box-shadow: 0 3px 12px #18324712;
+    }
+    .bottle { font-size: 58px; text-align: center; }
+    .price { font-size: 23px; color: #087ac1; font-weight: bold; }
+    .muted { color: #637989; font-size: 14px; }
+    .wide { width: 100%; margin-top: 10px; }
+    label { display: block; margin: 12px 0 6px; font-weight: bold; }
+    input, select { width: 100%; border: 1px solid #cbd8e0; background: white; }
+    .qty { display: flex; gap: 12px; align-items: center; justify-content: center; margin: 12px; }
+    .qty button { width: 42px; }
+    .total { font-size: 20px; font-weight: bold; }
+    footer { text-align: center; padding: 20px; color: #637989; }
+    a { color: #087ac1; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💧 Mineral water</h1>
+    <div id="subtitle">Kogon shahrida suv yetkazib berish</div>
+  </header>
+
+  <main>
+    <div class="lang">
+      <button onclick="setLang('uz')">O‘zbekcha</button>
+      <button onclick="setLang('ru')">Русский</button>
+    </div>
+
+    <section class="card">
+      <div class="bottle">🫙💧</div>
+      <h2 id="product">19 litrli ichimlik suvi</h2>
+      <p class="price">12 000 so‘m</p>
+      <p id="delivery">Yetkazib berish bepul. Bo‘sh idish almashuv asosida.</p>
+      <p class="muted" id="hours">Ish vaqti: 08:00–20:00</p>
+
+      <div class="qty">
+        <button onclick="changeQty(-1)">−</button>
+        <strong id="qty">1</strong>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+      <button class="wide" id="add" onclick="addToCart()">Savatga qo‘shish</button>
+    </section>
+
+    <section class="card">
+      <h2 id="cartTitle">🛒 Savat</h2>
+      <p><span id="cartLabel">Suv miqdori:</span> <strong id="cartQty">0</strong></p>
+      <p class="total"><span id="totalLabel">Jami:</span> <span id="total">0</span> so‘m</p>
+      <p class="muted" id="free">Yetkazib berish: bepul</p>
+    </section>
+
+    <section class="card">
+      <h2 id="orderTitle">📦 Buyurtma berish</h2>
+      <form id="orderForm">
+        <label id="nameLabel" for="name">Ismingiz</label>
+        <input id="name" required placeholder="Ism va familiya">
+
+        <label id="phoneLabel" for="phone">Telefon raqamingiz</label>
+        <input id="phone" required type="tel" placeholder="+998">
+
+        <label id="addressLabel" for="address">Yetkazib berish manzili</label>
+        <input id="address" required placeholder="Ko‘cha, uy, mo‘ljal">
+
+        <label id="paymentLabel" for="payment">To‘lov turi</label>
+        <select id="payment">
+          <option value="Naqd">Naqd pul</option>
+          <option value="Plastik karta">Plastik karta</option>
+          <option value="Click">Click</option>
+          <option value="Payme">Payme</option>
+        </select>
+
+        <label id="noteLabel" for="note">Izoh (ixtiyoriy)</label>
+        <input id="note" placeholder="Qo‘shimcha ma’lumot">
+
+        <button class="wide" type="submit" id="submit">Buyurtmani tayyorlash</button>
+      </form>
+      <p class="muted" id="disclaimer">
+        Bu hozircha namoyish versiyasi: buyurtma operatorga avtomatik yuborilmaydi.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 id="contactTitle">☎️ Aloqa</h2>
+      <p>+998 99 549 86 50</p>
+      <p><a href="https://t.me/MineralwaterKagan_bot">Telegram bot: @MineralwaterKagan_bot</a></p>
+      <p id="city">Yetkazib berish hududi: Kogon shahri</p>
+    </section>
+  </main>
+  <footer>Mineral water 💧</footer>
+
+  <script>
+    let quantity = 1;
+    let cart = 0;
+    let lang = "uz";
+    const price = 12000;
+
+    const text = {
+      uz: {
+        subtitle:"Kogon shahrida suv yetkazib berish",
+        product:"19 litrli ichimlik suvi",
+        delivery:"Yetkazib berish bepul. Bo‘sh idish almashuv asosida.",
+        hours:"Ish vaqti: 08:00–20:00",
+        add:"Savatga qo‘shish", cartTitle:"🛒 Savat",
+        cartLabel:"Suv miqdori:", totalLabel:"Jami:",
+        free:"Yetkazib berish: bepul", orderTitle:"📦 Buyurtma berish",
+        nameLabel:"Ismingiz", phoneLabel:"Telefon raqamingiz",
+        addressLabel:"Yetkazib berish manzili", paymentLabel:"To‘lov turi",
+        noteLabel:"Izoh (ixtiyoriy)", submit:"Buyurtmani tayyorlash",
+        disclaimer:"Bu hozircha namoyish versiyasi: buyurtma operatorga avtomatik yuborilmaydi.",
+        contactTitle:"☎️ Aloqa", city:"Yetkazib berish hududi: Kogon shahri",
+        empty:"Avval savatga suv qo‘shing.",
+        ready:"Buyurtma ma’lumotlari tayyorlandi. Bu namoyish versiyasi, buyurtma hali yuborilmadi."
+      },
+      ru: {
+        subtitle:"Доставка воды в городе Каган",
+        product:"Питьевая вода, 19 литров",
+        delivery:"Доставка бесплатная. Обмен пустой бутыли.",
+        hours:"Время работы: 08:00–20:00",
+        add:"Добавить в корзину", cartTitle:"🛒 Корзина",
+        cartLabel:"Количество бутылей:", totalLabel:"Итого:",
+        free:"Доставка: бесплатно", orderTitle:"📦 Оформление заказа",
+        nameLabel:"Ваше имя", phoneLabel:"Ваш номер телефона",
+        addressLabel:"Адрес доставки", paymentLabel:"Способ оплаты",
+        noteLabel:"Комментарий (необязательно)", submit:"Подготовить заказ",
+        disclaimer:"Это демонстрационная версия: заказ автоматически оператору не отправляется.",
+        contactTitle:"☎️ Контакты", city:"Зона доставки: город Каган",
+        empty:"Сначала добавьте воду в корзину.",
+        ready:"Данные заказа подготовлены. Это демо-версия, заказ ещё не отправлен."
+      }
+    };
+
+    function setLang(language) {
+      lang = language;
+      const t = text[lang];
+      document.documentElement.lang = lang;
+      const ids = [
+        "subtitle","product","delivery","hours","add","cartTitle",
+        "cartLabel","totalLabel","free","orderTitle","nameLabel",
+        "phoneLabel","addressLabel","paymentLabel","noteLabel",
+        "submit","disclaimer","contactTitle","city"
+      ];
+      ids.forEach(id => document.getElementById(id).textContent = t[id]);
+      document.getElementById("name").placeholder = lang === "uz" ? "Ism va familiya" : "Имя и фамилия";
+      document.getElementById("address").placeholder = lang === "uz" ? "Ko‘cha, uy, mo‘ljal" : "Улица, дом, ориентир";
+      document.getElementById("note").placeholder = lang === "uz" ? "Qo‘shimcha ma’lumot" : "Дополнительная информация";
+      const options = lang === "uz"
+        ? ["Naqd pul","Plastik karta","Click","Payme"]
+        : ["Наличные","Банковская карта","Click","Payme"];
+      [...document.getElementById("payment").options].forEach((o,i) => o.textContent = options[i]);
+    }
+
+    function changeQty(amount) {
+      quantity = Math.max(1, quantity + amount);
+      document.getElementById("qty").textContent = quantity;
+    }
+
+    function updateCart() {
+      document.getElementById("cartQty").textContent = cart;
+      document.getElementById("total").textContent = (cart * price).toLocaleString("ru-RU");
+    }
+
+    function addToCart() {
+      cart += quantity;
+      updateCart();
+    }
+
+    document.getElementById("orderForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      if (cart < 1) {
+        alert(text[lang].empty);
+        return;
+      }
+      const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        payment: document.getElementById("payment").value,
+        note: document.getElementById("note").value,
+        bottles: cart,
+        total: cart * price
+      };
+      alert(text[lang].ready + "\n\n" + JSON.stringify(data, null, 2));
+    });
+  </script>
+</body>
+</html>
+
