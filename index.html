@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087cc1">
+<title>Mineral water | Kogon</title>
+<style>
+:root {
+  --blue:#087cc1;
+  --dark:#12324a;
+  --bg:#f0f7fb;
+  --muted:#6b8191;
+  --green:#15966a;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+}
+header {
+  background:linear-gradient(135deg,#087cc1,#16b4d4);
+  color:white;
+  padding:25px 18px 30px;
+  border-radius:0 0 28px 28px;
+}
+.top {
+  max-width:600px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.logo { font-size:23px;font-weight:800; }
+.lang button {
+  background:white;color:var(--blue);
+  padding:8px 11px;border:0;border-radius:9px;
+}
+.hero {
+  max-width:600px;
+  margin:22px auto 0;
+}
+.hero h1 { font-size:27px;margin:0 0 9px; }
+.hero p { margin:0;line-height:1.5;opacity:.95; }
+main { max-width:600px;margin:auto;padding:16px; }
+.card {
+  background:white;border-radius:19px;
+  padding:18px;margin:14px 0;
+  box-shadow:0 5px 20px #153b5210;
+}
+.product-art {
+  text-align:center;font-size:80px;
+  padding:12px;background:#eaf7ff;border-radius:15px;
+}
+h2 { font-size:20px;margin:5px 0 14px; }
+.price { font-size:25px;color:var(--blue);font-weight:800; }
+.muted { color:var(--muted);font-size:14px;line-height:1.5; }
+button {
+  font:inherit;font-weight:700;
+  cursor:pointer;border:0;border-radius:12px;
+  padding:13px 15px;background:var(--blue);color:white;
+}
+button:active { transform:scale(.98); }
+.wide { width:100%;margin-top:12px; }
+.secondary { background:#e8f4fb;color:var(--blue); }
+.qty {
+  display:flex;align-items:center;justify-content:center;
+  gap:20px;margin:15px 0;
+}
+.qty button { width:43px;height:43px;padding:0;font-size:22px; }
+.qty strong { font-size:20px;min-width:25px;text-align:center; }
+.line { display:flex;justify-content:space-between;gap:12px;margin:10px 0; }
+.total { font-size:21px;font-weight:800; }
+label { display:block;font-weight:700;font-size:14px;margin:14px 0 6px; }
+input,select,textarea {
+  width:100%;padding:13px;border:1px solid #d5e1e8;
+  border-radius:11px;font:inherit;background:#fff;color:var(--dark);
+}
+textarea { min-height:75px;resize:vertical; }
+.check {
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:14px;line-height:1.45;margin-top:13px;
+}
+.check input { width:18px;height:18px;margin:0;flex-shrink:0; }
+.notice {
+  background:#eaf7f1;color:#176a4e;
+  padding:12px;border-radius:12px;font-size:14px;line-height:1.5;
+}
+footer { text-align:center;padding:22px;color:var(--muted);font-size:13px; }
+a { color:var(--blue); }
+.hidden { display:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <div class="logo">💧 Mineral water</div>
+    <div class="lang">
+      <button onclick="setLang('uz')">UZ</button>
+      <button onclick="setLang('ru')">RU</button>
+    </div>
+  </div>
+  <div class="hero">
+    <h1 id="welcome">Toza suv — uyingizgacha!</h1>
+    <p id="intro">Kogon shahri bo‘ylab 19 litrli ichimlik suvi yetkazib beramiz.</p>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <div class="product-art">🫙💧</div>
+    <h2 id="productName">19 litrli ichimlik suvi</h2>
+    <div class="price">12 000 so‘m</div>
+    <p class="muted" id="productInfo">Bo‘sh idish almashuv asosida. Yetkazib berish bepul.</p>
+    <div class="qty">
+      <button class="secondary" onclick="changeQty(-1)">−</button>
+      <strong id="qty">1</strong>
+      <button class="secondary" onclick="changeQty(1)">+</button>
+    </div>
+    <button class="wide" id="addButton" onclick="addToCart()">🛒 Savatga qo‘shish</button>
+  </section>
+
+  <section class="card">
+    <h2 id="cartHeading">🛒 Savatingiz</h2>
+    <div class="line">
+      <span id="cartProduct">19 litrli suv</span>
+      <strong><span id="cartQty">0</span> × 12 000</strong>
+    </div>
+    <div class="line">
+      <span id="deliveryLabel">Yetkazib berish</span>
+      <strong id="freeLabel">Bepul</strong>
+    </div>
+    <label for="promo" id="promoLabel">Promo-kod</label>
+    <input id="promo" placeholder="Promo-kodni kiriting">
+    <button class="secondary wide" onclick="applyPromo()" id="promoButton">Promo-kodni qo‘llash</button>
+    <p class="muted" id="promoMessage"></p>
+    <hr style="border:0;border-top:1px solid #e5edf2;margin:18px 0">
+    <div class="line total">
+      <span id="totalLabel">Jami</span>
+      <span><span id="total">0</span> so‘m</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="orderHeading">📦 Buyurtma va anketa</h2>
+    <form id="orderForm">
+      <label for="name" id="nameLabel">Ism va familiya</label>
+      <input id="name" required autocomplete="name" placeholder="Ismingizni kiriting">
+
+      <label for="phone" id="phoneLabel">Telefon raqami</label>
+      <input id="phone" required type="tel" autocomplete="tel" placeholder="+998">
+
+      <label for="birth" id="birthLabel">Tug‘ilgan sana</label>
+      <input id="birth" type="date" required>
+
+      <label for="address" id="addressLabel">Yetkazib berish manzili</label>
+      <input id="address" required placeholder="Ko‘cha, uy, mo‘ljal" autocomplete="street-address">
+
+      <label for="payment" id="paymentLabel">To‘lov turi</label>
+      <select id="payment">
+        <option value="Naqd pul">Naqd pul</option>
+        <option value="Plastik karta">Plastik karta</option>
+        <option value="Click">Click</option>
+        <option value="Payme">Payme</option>
+      </select>
+
+      <label for="note" id="noteLabel">Buyurtmaga izoh</label>
+      <textarea id="note" placeholder="Masalan: qo‘ng‘iroq qiling"></textarea>
+
+      <label class="check">
+        <input type="checkbox" id="birthdayConsent">
+        <span id="birthdayText">Tug‘ilgan kunimda Telegram orqali tabrik olishga roziman.</span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" id="agree" required>
+        <span id="agreeText">Buyurtma ma’lumotlarimdan buyurtmani rasmiylashtirish uchun foydalanilishiga roziman.</span>
+      </label>
+
+      <button class="wide" type="submit" id="submitButton">Buyurtmani tayyorlash</button>
+    </form>
+    <div id="result" class="notice hidden" style="margin-top:15px;white-space:pre-wrap"></div>
+    <p class="muted" id="demoNote">Namoyish versiyasi: buyurtma hozircha operatorga yuborilmaydi.</p>
+  </section>
+
+  <section class="card">
+    <h2 id="contactHeading">☎️ Biz bilan bog‘lanish</h2>
+    <p><strong>📱 +998 99 549 86 50</strong></p>
+    <p>Telegram bot: <a href="https://t.me/MineralwaterKagan_bot" target="_blank" rel="noopener">@MineralwaterKagan_bot</a></p>
+    <p class="muted" id="working">Ish vaqti: 08:00–20:00 · Kogon shahri</p>
+    <a href="https://t.me/c/4393808816/2" target="_blank" rel="noopener" id="operatorLink">Operator bilan bog‘lanish</a>
+  </section>
+
+  <section class="card">
+    <h2 id="historyHeading">🧾 Buyurtma tarixi</h2>
+    <p class="muted" id="historyNote">Bu namoyish versiyasida buyurtmalar tarixi serverga saqlanmaydi.</p>
+  </section>
+</main>
+
+<footer>💧 Mineral water · Kogon</footer>
+
+<script>
+const PRICE = 12000;
+let quantity = 1;
+let cart = 0;
+let discount = 0;
+let lang = "uz";
+
+const translations = {
+  uz: {
+    welcome:"Toza suv — uyingizgacha!",
+    intro:"Kogon shahri bo‘ylab 19 litrli ichimlik suvi yetkazib beramiz.",
+    productName:"19 litrli ichimlik suvi",
+    productInfo:"Bo‘sh idish almashuv asosida. Yetkazib berish bepul.",
+    addButton:"🛒 Savatga qo‘shish",
+    cartHeading:"🛒 Savatingiz", cartProduct:"19 litrli suv",
+    deliveryLabel:"Yetkazib berish", freeLabel:"Bepul",
+    promoLabel:"Promo-kod", promoButton:"Promo-kodni qo‘llash",
+    orderHeading:"📦 Buyurtma va anketa",
+    nameLabel:"Ism va familiya", phoneLabel:"Telefon raqami",
+    birthLabel:"Tug‘ilgan sana", addressLabel:"Yetkazib berish manzili",
+    paymentLabel:"To‘lov turi", noteLabel:"Buyurtmaga izoh",
+    birthdayText:"Tug‘ilgan kunimda Telegram orqali tabrik olishga roziman.",
+    agreeText:"Buyurtma ma’lumotlarimdan buyurtmani rasmiylashtirish uchun foydalanilishiga roziman.",
+    submitButton:"Buyurtmani tayyorlash",
+    demoNote:"Namoyish versiyasi: buyurtma hozircha operatorga yuborilmaydi.",
+    contactHeading:"☎️ Biz bilan bog‘lanish",
+    working:"Ish vaqti: 08:00–20:00 · Kogon shahri",
+    operatorLink:"Operator bilan bog‘lanish",
+    historyHeading:"🧾 Buyurtma tarixi",
+    historyNote:"Bu namoyish versiyasida buyurtmalar tarixi serverga saqlanmaydi.",
+    empty:"Avval savatga suv qo‘shing.",
+    badPromo:"Promo-kod yaroqsiz yoki hozircha faol emas.",
+    promoApplied:"Promo-kod qabul qilindi: 10% chegirma.",
+    ready:"Buyurtma ma’lumotlari tayyorlandi. Hozircha buyurtma yuborilmadi.",
+    paymentOptions:["Naqd pul","Plastik karta","Click","Payme"],
+    namePlaceholder:"Ismingizni kiriting",
+    addressPlaceholder:"Ko‘cha, uy, mo‘ljal",
+    notePlaceholder:"Masalan: qo‘ng‘iroq qiling"
+  },
+  ru: {
+    welcome:"Чистая вода — прямо к вам!",
+    intro:"Доставляем питьевую воду 19 литров по городу Каган.",
+    productName:"Питьевая вода, 19 литров",
+    productInfo:"Обмен пустой бутыли. Доставка бесплатная.",
+    addButton:"🛒 Добавить в корзину",
+    cartHeading:"🛒 Ваша корзина", cartProduct:"Вода 19 литров",
+    deliveryLabel:"Доставка", freeLabel:"Бесплатно",
+    promoLabel:"Промокод", promoButton:"Применить промокод",
+    orderHeading:"📦 Заказ и анкета",
+    nameLabel:"Имя и фамилия", phoneLabel:"Номер телефона",
+    birthLabel:"Дата рождения", addressLabel:"Адрес доставки",
+    paymentLabel:"Способ оплаты", noteLabel:"Комментарий к заказу",
+    birthdayText:"Согласен(на) получать поздравление в Telegram в день рождения.",
+    agreeText:"Согласен(на) на использование данных для оформления заказа.",
+    submitButton:"Подготовить заказ",
+    demoNote:"Демонстрационная версия: заказ пока не отправляется оператору.",
+    contactHeading:"☎️ Свяжитесь с нами",
+    working:"Часы работы: 08:00–20:00 · город Каган",
+    operatorLink:"Связаться с оператором",
+    historyHeading:"🧾 История заказов",
+    historyNote:"В демоверсии история заказов не сохраняется на сервере.",
+    empty:"Сначала добавьте воду в корзину.",
+    badPromo:"Промокод недействителен или пока не активен.",
+    promoApplied:"Промокод принят: скидка 10%.",
+    ready:"Данные заказа подготовлены. Заказ пока не отправлен.",
+    paymentOptions:["Наличные","Банковская карта","Click","Payme"],
+    namePlaceholder:"Введите ваше имя",
+    addressPlaceholder:"Улица, дом, ориентир",
+    notePlaceholder:"Например: позвоните перед доставкой"
+  }
+};
+
+function setLang(value) {
+  lang = value;
+  const t = translations[lang];
+  document.documentElement.lang = lang;
+  Object.keys(t).forEach(key => {
+    const element = document.getElementById(key);
+    if (element && typeof t[key] === "string") {
+      element.textContent = t[key];
+    }
+  });
+
+  document.getElementById("name").placeholder = t.namePlaceholder;
+  document.getElementById("address").placeholder = t.addressPlaceholder;
+  document.getElementById("note").placeholder = t.notePlaceholder;
+
+  const payment = document.getElementById("payment");
+  t.paymentOptions.forEach((label, index) => {
+    payment.options[index].textContent = label;
+  });
+  updateCart();
+}
+
+function changeQty(amount) {
+  quantity = Math.max(1, quantity + amount);
+  document.getElementById("qty").textContent = quantity;
+}
+
+function addToCart() {
+  cart += quantity;
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cartQty").textContent = cart;
+  const subtotal = cart * PRICE;
+  const total = Math.max(0, subtotal - discount);
+  document.getElementById("total").textContent = total.toLocaleString(
+    lang === "ru" ? "ru-RU" : "uz-UZ"
+  );
+}
+
+function applyPromo() {
+  const code = document.getElementById("promo").value.trim().toUpperCase();
+  const message = document.getElementById("promoMessage");
+  const t = translations[lang];
+
+  // Demo promo code. Replace with server-side validation before launch.
+  if (code === "SUV10" && cart > 0) {
+    discount = Math.round(cart * PRICE * 0.10);
+    message.textContent = t.promoApplied;
+  } else {
+    discount = 0;
+    message.textContent = t.badPromo;
+  }
+  updateCart();
+}
+
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const t = translations[lang];
+  const result = document.getElementById("result");
+
+  if (cart < 1) {
+    alert(t.empty);
+    return;
+  }
+
+  const order = {
+    customer: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    birthDate: document.getElementById("birth").value,
+    birthdayGreetingConsent: document.getElementById("birthdayConsent").checked,
+    address: document.getElementById("address").value.trim(),
+    payment: document.getElementById("payment").value,
+    note: document.getElementById("note").value.trim(),
+    bottles: cart,
+    discount: discount,
+    total: Math.max(0, cart * PRICE - discount)
+  };
+
+  result.textContent =
+    t.ready + "\n\n" +
+    (lang === "ru" ? "Имя: " : "Ism: ") + order.customer + "\n" +
+    (lang === "ru" ? "Телефон: " : "Telefon: ") + order.phone + "\n" +
+    (lang === "ru" ? "Адрес: " : "Manzil: ") + order.address + "\n" +
+    (lang === "ru" ? "Бутылей: " : "Idishlar soni: ") + order.bottles + "\n" +
+    (lang === "ru" ? "Оплата: " : "To‘lov: ") + order.payment + "\n" +
+    (lang === "ru" ? "Итого: " : "Jami: ") +
+    order.total.toLocaleString() + " so‘m";
+
+  result.classList.remove("hidden");
+});
+</script>
+</body>
+</html>
