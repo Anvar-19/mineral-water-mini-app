@@ -2,372 +2,1127 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#087cc1">
-<title>Mineral water | Kogon</title>
-<style>
-:root {
-  --blue:#087cc1;
-  --dark:#12324a;
-  --bg:#f0f7fb;
-  --muted:#6b8191;
-  --green:#15966a;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--dark);
-}
-header {
-  background:linear-gradient(135deg,#087cc1,#16b4d4);
-  color:white;
-  padding:25px 18px 30px;
-  border-radius:0 0 28px 28px;
-}
-.top {
-  max-width:600px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-.logo { font-size:23px;font-weight:800; }
-.lang button {
-  background:white;color:var(--blue);
-  padding:8px 11px;border:0;border-radius:9px;
-}
-.hero {
-  max-width:600px;
-  margin:22px auto 0;
-}
-.hero h1 { font-size:27px;margin:0 0 9px; }
-.hero p { margin:0;line-height:1.5;opacity:.95; }
-main { max-width:600px;margin:auto;padding:16px; }
-.card {
-  background:white;border-radius:19px;
-  padding:18px;margin:14px 0;
-  box-shadow:0 5px 20px #153b5210;
-}
-.product-art {
-  text-align:center;font-size:80px;
-  padding:12px;background:#eaf7ff;border-radius:15px;
-}
-h2 { font-size:20px;margin:5px 0 14px; }
-.price { font-size:25px;color:var(--blue);font-weight:800; }
-.muted { color:var(--muted);font-size:14px;line-height:1.5; }
-button {
-  font:inherit;font-weight:700;
-  cursor:pointer;border:0;border-radius:12px;
-  padding:13px 15px;background:var(--blue);color:white;
-}
-button:active { transform:scale(.98); }
-.wide { width:100%;margin-top:12px; }
-.secondary { background:#e8f4fb;color:var(--blue); }
-.qty {
-  display:flex;align-items:center;justify-content:center;
-  gap:20px;margin:15px 0;
-}
-.qty button { width:43px;height:43px;padding:0;font-size:22px; }
-.qty strong { font-size:20px;min-width:25px;text-align:center; }
-.line { display:flex;justify-content:space-between;gap:12px;margin:10px 0; }
-.total { font-size:21px;font-weight:800; }
-label { display:block;font-weight:700;font-size:14px;margin:14px 0 6px; }
-input,select,textarea {
-  width:100%;padding:13px;border:1px solid #d5e1e8;
-  border-radius:11px;font:inherit;background:#fff;color:var(--dark);
-}
-textarea { min-height:75px;resize:vertical; }
-.check {
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:14px;line-height:1.45;margin-top:13px;
-}
-.check input { width:18px;height:18px;margin:0;flex-shrink:0; }
-.notice {
-  background:#eaf7f1;color:#176a4e;
-  padding:12px;border-radius:12px;font-size:14px;line-height:1.5;
-}
-footer { text-align:center;padding:22px;color:var(--muted);font-size:13px; }
-a { color:var(--blue); }
-.hidden { display:none; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0879d1">
+  <title>Mineral Water — Kogon</title>
+  <style>
+    :root {
+      --blue: #0879d1;
+      --blue-dark: #075eae;
+      --cyan: #12b7d0;
+      --bg: #eef8fc;
+      --text: #18354a;
+      --muted: #718596;
+      --white: #fff;
+      --line: #dcebf3;
+      --green: #20a76b;
+      --shadow: 0 5px 18px #12537c12;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+
+    .app {
+      max-width: 520px;
+      margin: auto;
+      min-height: 100vh;
+      padding-bottom: 85px;
+      background: var(--bg);
+    }
+
+    header {
+      background: linear-gradient(135deg, #0868bd, #13b6ce);
+      color: white;
+      padding: 18px 18px 24px;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      opacity: .85;
+      margin-top: 4px;
+    }
+
+    .languages { display: flex; gap: 6px; }
+
+    .languages button {
+      border: 1px solid #ffffff80;
+      background: #ffffff18;
+      color: white;
+      border-radius: 10px;
+      padding: 8px 11px;
+      font-weight: bold;
+    }
+
+    .languages button.active {
+      background: white;
+      color: var(--blue);
+    }
+
+    .hero {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hero h1 {
+      font-size: 29px;
+      line-height: 1.1;
+      margin: 0 0 8px;
+    }
+
+    .hero p { margin: 0; line-height: 1.5; }
+
+    .hero-drop {
+      font-size: 76px;
+      filter: drop-shadow(0 7px 6px #003b6840);
+    }
+
+    .location {
+      display: inline-block;
+      margin-top: 18px;
+      background: #ffffff20;
+      border: 1px solid #ffffff50;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      padding: 14px;
+      margin-top: -2px;
+    }
+
+    .feature {
+      text-align: center;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 13px 5px;
+      font-size: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature b {
+      display: block;
+      font-size: 23px;
+      margin-bottom: 6px;
+    }
+
+    main { padding: 0 14px; }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 16px 2px 12px;
+      gap: 10px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .section-title span {
+      color: var(--blue);
+      font-size: 13px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: 2px 0 12px;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 8px 14px;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .filter.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 11px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .product-image {
+      background: #eaf7ff;
+      border-radius: 13px;
+      height: 125px;
+      display: grid;
+      place-items: center;
+      font-size: 65px;
+      margin-bottom: 10px;
+    }
+
+    .product h3 { margin: 0 0 5px; font-size: 15px; }
+    .product .description { color: var(--muted); font-size: 12px; }
+    .price { color: var(--blue); font-size: 19px; font-weight: 800; margin: 10px 0; }
+    .unit { font-size: 12px; font-weight: 400; }
+
+    .primary, .secondary, .danger {
+      border: 0;
+      border-radius: 11px;
+      padding: 12px 14px;
+      font-weight: 700;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(110deg, var(--blue), #08a8c8);
+    }
+
+    .secondary {
+      color: var(--blue);
+      background: #e9f5ff;
+      border: 1px solid #cfe8fa;
+    }
+
+    .danger { color: #b52c36; background: #fff0f1; }
+    .wide { width: 100%; }
+
+    .promo-banner {
+      margin-top: 16px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 15px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .promo-banner .gift { font-size: 32px; }
+    .promo-banner p { margin: 5px 0 0; font-size: 12px; color: var(--muted); }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 15px;
+      margin-top: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 { margin: 0 0 12px; }
+    .muted { color: var(--muted); font-size: 13px; }
+
+    .cart-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+
+    .cart-row:last-child { border-bottom: 0; }
+    .cart-emoji { font-size: 34px; }
+    .cart-info { flex: 1; min-width: 0; }
+    .cart-info b { display: block; font-size: 14px; }
+    .cart-info small { color: var(--muted); display: block; margin-top: 5px; }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 7px;
+    }
+
+    .quantity button {
+      width: 27px;
+      height: 27px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f4faff;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .remove {
+      border: 0;
+      background: transparent;
+      color: #b44;
+      font-size: 18px;
+    }
+
+    .total-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 11px 0;
+    }
+
+    .total-line strong { text-align: right; }
+    .grand-total { font-size: 20px; color: var(--blue); font-weight: 800; }
+
+    .field { margin: 12px 0; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .field input, .field textarea, .field select {
+      width: 100%;
+      border: 1px solid #cfe0eb;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fbfdff;
+      color: var(--text);
+      outline-color: var(--blue);
+    }
+
+    .field textarea { resize: vertical; min-height: 75px; }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+    }
+
+    .payment-option {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 11px;
+      padding: 11px 4px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .payment-option.active {
+      border: 2px solid var(--blue);
+      background: #eef8ff;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .payment-option span { display: block; font-size: 21px; margin-bottom: 5px; }
+
+    .notice {
+      background: #edf7ff;
+      border-radius: 10px;
+      padding: 11px;
+      font-size: 12px;
+      color: #42657d;
+      line-height: 1.5;
+      margin: 12px 0;
+    }
+
+    .order-card {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 13px;
+      margin: 10px 0;
+    }
+
+    .order-head { display: flex; justify-content: space-between; gap: 8px; }
+    .status {
+      display: inline-block;
+      background: #fff2d9;
+      color: #a96600;
+      padding: 6px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .status.done { background: #e4f8ed; color: #14834d; }
+    .status.road { background: #e8f3ff; color: #176ab0; }
+
+    .success {
+      text-align: center;
+      padding: 22px 10px;
+    }
+
+    .success .check {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: #e1f8ed;
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 42px;
+      margin: 0 auto 15px;
+    }
+
+    .success h2 { margin: 0 0 9px; }
+    .success p { color: var(--muted); line-height: 1.5; }
+
+    .profile-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .avatar {
+      width: 55px;
+      height: 55px;
+      background: #e3f4ff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 29px;
+    }
+
+    .profile-head h3 { margin: 0 0 5px; }
+
+    .profile-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .profile-item:last-child { border: 0; }
+    .profile-item span { color: var(--muted); }
+
+    .contact-link {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 9px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 8px 3px calc(8px + env(safe-area-inset-bottom));
+      z-index: 5;
+    }
+
+    .nav-button {
+      position: relative;
+      border: 0;
+      background: transparent;
+      color: #8294a2;
+      padding: 5px 1px;
+      font-size: 11px;
+    }
+
+    .nav-button .nav-icon { display: block; font-size: 21px; margin-bottom: 4px; }
+    .nav-button.active { color: var(--blue); font-weight: bold; }
+
+    .cart-badge {
+      position: absolute;
+      top: 0;
+      right: 20%;
+      background: #f04452;
+      color: white;
+      border-radius: 50%;
+      min-width: 17px;
+      height: 17px;
+      font-size: 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hidden { display: none !important; }
+
+    .courier-step {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 0;
+    }
+
+    .step-dot {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e7f3fb;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .courier-step.current .step-dot {
+      background: var(--blue);
+      color: white;
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 25px 8px;
+    }
+
+    @media (max-width: 360px) {
+      .hero h1 { font-size: 25px; }
+      .product-image { height: 105px; }
+      .payment-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <div class="top">
-    <div class="logo">💧 Mineral water</div>
-    <div class="lang">
-      <button onclick="setLang('uz')">UZ</button>
-      <button onclick="setLang('ru')">RU</button>
+<div class="app">
+  <header>
+    <div class="topline">
+      <div class="brand">💧 MINERAL WATER
+        <small>Telegram Mini App · Kogon</small>
+      </div>
+      <div class="languages">
+        <button id="langUz" class="active" onclick="setLanguage('uz')">UZ</button>
+        <button id="langRu" onclick="setLanguage('ru')">RU</button>
+      </div>
     </div>
+    <div class="hero">
+      <div>
+        <h1 data-i18n="heroTitle">Toza suv — uyingizgacha!</h1>
+        <p data-i18n="heroText">Kogon shahri bo‘ylab 19 litrli ichimlik suvi yetkazib beramiz.</p>
+      </div>
+      <div class="hero-drop">💧</div>
+    </div>
+    <div class="location">📍 <span data-i18n="location">Kogon shahri</span> · <span data-i18n="freeDelivery">Yetkazib berish bepul</span></div>
+  </header>
+
+  <div class="features">
+    <div class="feature"><b>💧</b><span data-i18n="feature1">Toza va sifatli</span></div>
+    <div class="feature"><b>🚚</b><span data-i18n="feature2">Tez yetkazib berish</span></div>
+    <div class="feature"><b>🛡️</b><span data-i18n="feature3">Qulay to‘lov</span></div>
   </div>
-  <div class="hero">
-    <h1 id="welcome">Toza suv — uyingizgacha!</h1>
-    <p id="intro">Kogon shahri bo‘ylab 19 litrli ichimlik suvi yetkazib beramiz.</p>
-  </div>
-</header>
 
-<main>
-  <section class="card">
-    <div class="product-art">🫙💧</div>
-    <h2 id="productName">19 litrli ichimlik suvi</h2>
-    <div class="price">12 000 so‘m</div>
-    <p class="muted" id="productInfo">Bo‘sh idish almashuv asosida. Yetkazib berish bepul.</p>
-    <div class="qty">
-      <button class="secondary" onclick="changeQty(-1)">−</button>
-      <strong id="qty">1</strong>
-      <button class="secondary" onclick="changeQty(1)">+</button>
-    </div>
-    <button class="wide" id="addButton" onclick="addToCart()">🛒 Savatga qo‘shish</button>
-  </section>
+  <main>
+    <section id="homePage">
+      <div class="section-title">
+        <h2 data-i18n="productsTitle">Ommabop mahsulotlar</h2>
+        <span data-i18n="allProducts">Barchasi ↓</span>
+      </div>
+      <div class="filters">
+        <button class="filter active" onclick="filterProducts('all',this)" data-i18n="all">Barchasi</button>
+        <button class="filter" onclick="filterProducts('water',this)">19 litr</button>
+        <button class="filter" onclick="filterProducts('bottle',this)" data-i18n="smallBottles">Kichik idishlar</button>
+      </div>
+      <div id="products" class="products"></div>
 
-  <section class="card">
-    <h2 id="cartHeading">🛒 Savatingiz</h2>
-    <div class="line">
-      <span id="cartProduct">19 litrli suv</span>
-      <strong><span id="cartQty">0</span> × 12 000</strong>
-    </div>
-    <div class="line">
-      <span id="deliveryLabel">Yetkazib berish</span>
-      <strong id="freeLabel">Bepul</strong>
-    </div>
-    <label for="promo" id="promoLabel">Promo-kod</label>
-    <input id="promo" placeholder="Promo-kodni kiriting">
-    <button class="secondary wide" onclick="applyPromo()" id="promoButton">Promo-kodni qo‘llash</button>
-    <p class="muted" id="promoMessage"></p>
-    <hr style="border:0;border-top:1px solid #e5edf2;margin:18px 0">
-    <div class="line total">
-      <span id="totalLabel">Jami</span>
-      <span><span id="total">0</span> so‘m</span>
-    </div>
-  </section>
+      <div class="promo-banner">
+        <div class="gift">🎁</div>
+        <div>
+          <b data-i18n="promoTitle">Chegirmalar va promo-kodlar</b>
+          <p data-i18n="promoText">Buyurtma berishda promo-kodingizni kiriting.</p>
+          <button class="secondary" style="margin-top:9px" onclick="showPage('checkoutPage')" data-i18n="usePromo">Kodni ishlatish</button>
+        </div>
+      </div>
 
-  <section class="card">
-    <h2 id="orderHeading">📦 Buyurtma va anketa</h2>
-    <form id="orderForm">
-      <label for="name" id="nameLabel">Ism va familiya</label>
-      <input id="name" required autocomplete="name" placeholder="Ismingizni kiriting">
+      <div class="panel">
+        <h3 data-i18n="popularPromo">🎉 Promo-kod</h3>
+        <p class="muted"><b>SUV10</b> — demo chegirma kodi. Buyurtma sahifasida sinab ko‘ring.</p>
+        <button class="secondary" onclick="showPage('checkoutPage')" data-i18n="orderNow">Buyurtma berish</button>
+      </div>
+    </section>
 
-      <label for="phone" id="phoneLabel">Telefon raqami</label>
-      <input id="phone" required type="tel" autocomplete="tel" placeholder="+998">
+    <section id="cartPage" class="hidden">
+      <div class="section-title"><h2 data-i18n="cartTitle">Savatcha</h2><span id="cartCount">0 ta</span></div>
+      <div class="panel">
+        <div id="cartItems"></div>
+        <div id="cartSummary"></div>
+        <button class="primary wide" onclick="goCheckout()" data-i18n="checkout">Buyurtmani rasmiylashtirish →</button>
+      </div>
+    </section>
 
-      <label for="birth" id="birthLabel">Tug‘ilgan sana</label>
-      <input id="birth" type="date" required>
+    <section id="checkoutPage" class="hidden">
+      <div class="section-title"><h2 data-i18n="checkoutTitle">Buyurtma berish</h2></div>
+      <div class="panel">
+        <h3 data-i18n="orderDetails">1. Buyurtma tarkibi</h3>
+        <div id="checkoutItems" class="muted"></div>
+        <div id="checkoutTotal" class="grand-total"></div>
+      </div>
 
-      <label for="address" id="addressLabel">Yetkazib berish manzili</label>
-      <input id="address" required placeholder="Ko‘cha, uy, mo‘ljal" autocomplete="street-address">
+      <form id="orderForm" class="panel">
+        <h3 data-i18n="customerInfo">2. Mijoz ma’lumotlari</h3>
+        <div class="field">
+          <label for="customerName" data-i18n="name">Ism-familiya *</label>
+          <input id="customerName" required placeholder="Ali Aliyev">
+        </div>
+        <div class="field">
+          <label for="customerPhone" data-i18n="phone">Telefon raqami *</label>
+          <input id="customerPhone" required type="tel" placeholder="+998 99 123 45 67">
+        </div>
+        <div class="field">
+          <label for="customerAddress" data-i18n="address">Yetkazib berish manzili *</label>
+          <input id="customerAddress" required placeholder="Kogon shahri, ko‘cha, uy">
+        </div>
+        <div class="field">
+          <label for="customerNote" data-i18n="note">Buyurtma izohi (ixtiyoriy)</label>
+          <textarea id="customerNote" placeholder="Masalan: mo‘ljal, qavat..."></textarea>
+        </div>
+        <div class="field">
+          <label for="emptyBottle" data-i18n="emptyBottle">Bo‘sh idish</label>
+          <select id="emptyBottle">
+            <option value="yes" data-i18n="exchange">Bo‘sh idishga almashtirish</option>
+            <option value="no" data-i18n="noBottle">Bo‘sh idishim yo‘q</option>
+          </select>
+        </div>
 
-      <label for="payment" id="paymentLabel">To‘lov turi</label>
-      <select id="payment">
-        <option value="Naqd pul">Naqd pul</option>
-        <option value="Plastik karta">Plastik karta</option>
-        <option value="Click">Click</option>
-        <option value="Payme">Payme</option>
-      </select>
+        <h3 data-i18n="payment">3. To‘lov turini tanlang</h3>
+        <div class="payment-grid">
+          <button type="button" class="payment-option active" onclick="choosePayment('Naqd pul',this)"><span>💵</span><i data-i18n="cash">Naqd pul</i></button>
+          <button type="button" class="payment-option" onclick="choosePayment('Plastik karta',this)"><span>💳</span><i data-i18n="card">Plastik karta</i></button>
+          <button type="button" class="payment-option" onclick="choosePayment('Click',this)"><span>📲</span>Click</button>
+          <button type="button" class="payment-option" onclick="choosePayment('Payme',this)"><span>🅿️</span>Payme</button>
+        </div>
 
-      <label for="note" id="noteLabel">Buyurtmaga izoh</label>
-      <textarea id="note" placeholder="Masalan: qo‘ng‘iroq qiling"></textarea>
+        <h3 style="margin-top:20px" data-i18n="promoCode">4. Promo-kod (ixtiyoriy)</h3>
+        <div class="field" style="display:flex;gap:7px">
+          <input id="promoInput" placeholder="SUV10">
+          <button type="button" class="secondary" onclick="applyPromo()" data-i18n="apply">Qo‘llash</button>
+        </div>
+        <div id="promoMessage" class="muted"></div>
+        <div class="notice" data-i18n="deliveryNotice">Yetkazib berish bepul. Buyurtma ma’lumotlari hozircha ushbu demo sahifada saqlanadi.</div>
+        <button class="primary wide" type="submit" data-i18n="confirmOrder">Buyurtmani tasdiqlash</button>
+      </form>
+    </section>
 
-      <label class="check">
-        <input type="checkbox" id="birthdayConsent">
-        <span id="birthdayText">Tug‘ilgan kunimda Telegram orqali tabrik olishga roziman.</span>
-      </label>
+    <section id="successPage" class="hidden">
+      <div class="panel success">
+        <div class="check">✓</div>
+        <h2 data-i18n="successTitle">Buyurtma qabul qilindi!</h2>
+        <p data-i18n="successText">Buyurtmangiz demo rejimida yaratildi. Haqiqiy operatorga yuborish uchun backend ulanishi kerak.</p>
+        <div class="notice"><b data-i18n="orderNumber">Buyurtma raqami:</b> <strong id="newOrderNumber"></strong></div>
+        <button class="primary wide" onclick="showPage('ordersPage')" data-i18n="myOrders">Buyurtmalarimga o‘tish</button>
+        <button class="secondary wide" style="margin-top:9px" onclick="showPage('homePage')" data-i18n="home">Bosh sahifa</button>
+      </div>
+    </section>
 
-      <label class="check">
-        <input type="checkbox" id="agree" required>
-        <span id="agreeText">Buyurtma ma’lumotlarimdan buyurtmani rasmiylashtirish uchun foydalanilishiga roziman.</span>
-      </label>
+    <section id="ordersPage" class="hidden">
+      <div class="section-title"><h2 data-i18n="ordersTitle">Buyurtmalarim</h2></div>
+      <div class="panel">
+        <p class="muted" data-i18n="ordersDescription">Buyurtmalaringiz tarixi va holati.</p>
+        <div id="ordersList"></div>
+      </div>
+    </section>
 
-      <button class="wide" type="submit" id="submitButton">Buyurtmani tayyorlash</button>
-    </form>
-    <div id="result" class="notice hidden" style="margin-top:15px;white-space:pre-wrap"></div>
-    <p class="muted" id="demoNote">Namoyish versiyasi: buyurtma hozircha operatorga yuborilmaydi.</p>
-  </section>
+    <section id="trackingPage" class="hidden">
+      <div class="section-title"><h2 data-i18n="trackingTitle">Buyurtmani kuzatish</h2></div>
+      <div class="panel">
+        <div class="field">
+          <label data-i18n="enterOrderNumber">Buyurtma raqami</label>
+          <input id="trackNumber" placeholder="MW-1001">
+        </div>
+        <button class="primary wide" onclick="trackOrder()" data-i18n="trackButton">Kuzatish</button>
+        <div id="trackingResult"></div>
+      </div>
+    </section>
 
-  <section class="card">
-    <h2 id="contactHeading">☎️ Biz bilan bog‘lanish</h2>
-    <p><strong>📱 +998 99 549 86 50</strong></p>
-    <p>Telegram bot: <a href="https://t.me/MineralwaterKagan_bot" target="_blank" rel="noopener">@MineralwaterKagan_bot</a></p>
-    <p class="muted" id="working">Ish vaqti: 08:00–20:00 · Kogon shahri</p>
-    <a href="https://t.me/c/4393808816/2" target="_blank" rel="noopener" id="operatorLink">Operator bilan bog‘lanish</a>
-  </section>
+    <section id="profilePage" class="hidden">
+      <div class="section-title"><h2 data-i18n="profileTitle">Mening profilim</h2></div>
+      <div class="panel">
+        <div class="profile-head">
+          <div class="avatar">👤</div>
+          <div>
+            <h3 id="profileName">Mijoz</h3>
+            <span class="muted" data-i18n="mineralCustomer">Mineral Water mijozi</span>
+          </div>
+        </div>
+        <div class="profile-item"><span data-i18n="phone">Telefon raqami</span><b id="profilePhone">Kiritilmagan</b></div>
+        <div class="profile-item"><span data-i18n="address">Manzil</span><b id="profileAddress">Kiritilmagan</b></div>
+        <div class="profile-item"><span data-i18n="orderCount">Buyurtmalar soni</span><b id="profileOrderCount">0 ta</b></div>
+        <div class="profile-item"><span data-i18n="payment">To‘lov usullari</span><b>Naqd, karta, Click, Payme</b></div>
+        <button class="secondary wide" style="margin-top:12px" onclick="editProfile()" data-i18n="editProfile">Profilni tahrirlash</button>
+      </div>
 
-  <section class="card">
-    <h2 id="historyHeading">🧾 Buyurtma tarixi</h2>
-    <p class="muted" id="historyNote">Bu namoyish versiyasida buyurtmalar tarixi serverga saqlanmaydi.</p>
-  </section>
-</main>
+      <div class="panel">
+        <h3 data-i18n="birthdayTitle">🎂 Tug‘ilgan kun</h3>
+        <p class="muted" data-i18n="birthdayText">Tug‘ilgan kun tabrigini olish uchun sanangizni kiriting va rozilik bering.</p>
+        <div class="field">
+          <label data-i18n="birthDate">Tug‘ilgan sana</label>
+          <input id="birthDate" type="date">
+        </div>
+        <label style="font-size:13px;display:flex;gap:8px;align-items:flex-start">
+          <input type="checkbox" id="birthdayConsent">
+          <span data-i18n="birthdayConsent">Tug‘ilgan kunimda Telegram orqali tabrik olishga roziman.</span>
+        </label>
+        <button class="primary wide" style="margin-top:12px" onclick="saveBirthday()" data-i18n="save">Saqlash</button>
+        <p class="muted" id="birthdayMessage"></p>
+      </div>
 
-<footer>💧 Mineral water · Kogon</footer>
+      <div class="panel">
+        <h3 data-i18n="operatorTitle">Operator bilan aloqa</h3>
+        <p class="muted">📞 +998 99 549 86 50</p>
+        <p class="muted">🕒 08:00–20:00</p>
+        <a class="primary contact-link" href="https://t.me/c/4393808816/2" target="_blank" rel="noopener" data-i18n="messageOperator">Telegram’da yozish</a>
+        <a class="secondary contact-link" href="tel:+998995498650" data-i18n="callOperator">Operatorga qo‘ng‘iroq qilish</a>
+      </div>
+
+      <div class="panel">
+        <h3 data-i18n="courierTitle">🚚 Yetkazib beruvchi paneli</h3>
+        <p class="muted" data-i18n="courierNotice">Bu namuna panel. Haqiqiy kuryer kirishi va buyurtma holatini o‘zgartirish uchun server va ruxsat tekshiruvi kerak.</p>
+        <button class="secondary wide" onclick="showPage('courierPage')" data-i18n="openCourier">Panelni ko‘rish</button>
+      </div>
+    </section>
+
+    <section id="courierPage" class="hidden">
+      <div class="section-title"><h2 data-i18n="courierTitle">Yetkazib beruvchi paneli</h2></div>
+      <div class="panel">
+        <div class="notice" data-i18n="courierDemo">Demo panel: quyidagi holat o‘zgarishi faqat ushbu brauzerda ko‘rinadi.</div>
+        <div id="courierOrders"></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-button active" data-page="homePage" onclick="showPage('homePage')"><span class="nav-icon">⌂</span><span data-i18n="home">Bosh sahifa</span></button>
+    <button class="nav-button" data-page="homePage" onclick="showPage('homePage')"><span class="nav-icon">▦</span><span data-i18n="catalog">Katalog</span></button>
+    <button class="nav-button" data-page="cartPage" onclick="showPage('cartPage')"><span class="nav-icon">🛒</span><span id="navCartLabel" data-i18n="cart">Savat</span><span id="navCartBadge" class="cart-badge hidden">0</span></button>
+    <button class="nav-button" data-page="ordersPage" onclick="showPage('ordersPage')"><span class="nav-icon">▣</span><span data-i18n="orders">Buyurtmalar</span></button>
+    <button class="nav-button" data-page="profilePage" onclick="showPage('profilePage')"><span class="nav-icon">♙</span><span data-i18n="profile">Profil</span></button>
+  </nav>
+</div>
 
 <script>
-const PRICE = 12000;
-let quantity = 1;
-let cart = 0;
-let discount = 0;
-let lang = "uz";
+  const products = [
+    { id: 1, nameUz: '19 litrli butil', nameRu: 'Бутыль 19 литров', price: 12000, emoji: '🚰', type: 'water', descUz: 'Toza, sifatli suv', descRu: 'Чистая питьевая вода' },
+    { id: 2, nameUz: '10 litrli butil', nameRu: 'Бутыль 10 литров', price: 8000, emoji: '🫙', type: 'water', descUz: 'Toza, sifatli suv', descRu: 'Чистая питьевая вода' },
+    { id: 3, nameUz: '5 litrli butil', nameRu: 'Бутыль 5 литров', price: 5000, emoji: '🧴', type: 'bottle', descUz: 'Ichimlik suvi', descRu: 'Питьевая вода' },
+    { id: 4, nameUz: '1.5 litrli idish', nameRu: 'Бутылка 1,5 литра', price: 3000, emoji: '💧', type: 'bottle', descUz: 'Ichimlik suvi', descRu: 'Питьевая вода' }
+  ];
 
-const translations = {
-  uz: {
-    welcome:"Toza suv — uyingizgacha!",
-    intro:"Kogon shahri bo‘ylab 19 litrli ichimlik suvi yetkazib beramiz.",
-    productName:"19 litrli ichimlik suvi",
-    productInfo:"Bo‘sh idish almashuv asosida. Yetkazib berish bepul.",
-    addButton:"🛒 Savatga qo‘shish",
-    cartHeading:"🛒 Savatingiz", cartProduct:"19 litrli suv",
-    deliveryLabel:"Yetkazib berish", freeLabel:"Bepul",
-    promoLabel:"Promo-kod", promoButton:"Promo-kodni qo‘llash",
-    orderHeading:"📦 Buyurtma va anketa",
-    nameLabel:"Ism va familiya", phoneLabel:"Telefon raqami",
-    birthLabel:"Tug‘ilgan sana", addressLabel:"Yetkazib berish manzili",
-    paymentLabel:"To‘lov turi", noteLabel:"Buyurtmaga izoh",
-    birthdayText:"Tug‘ilgan kunimda Telegram orqali tabrik olishga roziman.",
-    agreeText:"Buyurtma ma’lumotlarimdan buyurtmani rasmiylashtirish uchun foydalanilishiga roziman.",
-    submitButton:"Buyurtmani tayyorlash",
-    demoNote:"Namoyish versiyasi: buyurtma hozircha operatorga yuborilmaydi.",
-    contactHeading:"☎️ Biz bilan bog‘lanish",
-    working:"Ish vaqti: 08:00–20:00 · Kogon shahri",
-    operatorLink:"Operator bilan bog‘lanish",
-    historyHeading:"🧾 Buyurtma tarixi",
-    historyNote:"Bu namoyish versiyasida buyurtmalar tarixi serverga saqlanmaydi.",
-    empty:"Avval savatga suv qo‘shing.",
-    badPromo:"Promo-kod yaroqsiz yoki hozircha faol emas.",
-    promoApplied:"Promo-kod qabul qilindi: 10% chegirma.",
-    ready:"Buyurtma ma’lumotlari tayyorlandi. Hozircha buyurtma yuborilmadi.",
-    paymentOptions:["Naqd pul","Plastik karta","Click","Payme"],
-    namePlaceholder:"Ismingizni kiriting",
-    addressPlaceholder:"Ko‘cha, uy, mo‘ljal",
-    notePlaceholder:"Masalan: qo‘ng‘iroq qiling"
-  },
-  ru: {
-    welcome:"Чистая вода — прямо к вам!",
-    intro:"Доставляем питьевую воду 19 литров по городу Каган.",
-    productName:"Питьевая вода, 19 литров",
-    productInfo:"Обмен пустой бутыли. Доставка бесплатная.",
-    addButton:"🛒 Добавить в корзину",
-    cartHeading:"🛒 Ваша корзина", cartProduct:"Вода 19 литров",
-    deliveryLabel:"Доставка", freeLabel:"Бесплатно",
-    promoLabel:"Промокод", promoButton:"Применить промокод",
-    orderHeading:"📦 Заказ и анкета",
-    nameLabel:"Имя и фамилия", phoneLabel:"Номер телефона",
-    birthLabel:"Дата рождения", addressLabel:"Адрес доставки",
-    paymentLabel:"Способ оплаты", noteLabel:"Комментарий к заказу",
-    birthdayText:"Согласен(на) получать поздравление в Telegram в день рождения.",
-    agreeText:"Согласен(на) на использование данных для оформления заказа.",
-    submitButton:"Подготовить заказ",
-    demoNote:"Демонстрационная версия: заказ пока не отправляется оператору.",
-    contactHeading:"☎️ Свяжитесь с нами",
-    working:"Часы работы: 08:00–20:00 · город Каган",
-    operatorLink:"Связаться с оператором",
-    historyHeading:"🧾 История заказов",
-    historyNote:"В демоверсии история заказов не сохраняется на сервере.",
-    empty:"Сначала добавьте воду в корзину.",
-    badPromo:"Промокод недействителен или пока не активен.",
-    promoApplied:"Промокод принят: скидка 10%.",
-    ready:"Данные заказа подготовлены. Заказ пока не отправлен.",
-    paymentOptions:["Наличные","Банковская карта","Click","Payme"],
-    namePlaceholder:"Введите ваше имя",
-    addressPlaceholder:"Улица, дом, ориентир",
-    notePlaceholder:"Например: позвоните перед доставкой"
-  }
-};
-
-function setLang(value) {
-  lang = value;
-  const t = translations[lang];
-  document.documentElement.lang = lang;
-  Object.keys(t).forEach(key => {
-    const element = document.getElementById(key);
-    if (element && typeof t[key] === "string") {
-      element.textContent = t[key];
+  const translations = {
+    uz: {
+      heroTitle:'Toza suv — uyingizgacha!', heroText:'Kogon shahri bo‘ylab 19 litrli ichimlik suvi yetkazib beramiz.',
+      location:'Kogon shahri', freeDelivery:'Yetkazib berish bepul', feature1:'Toza va sifatli', feature2:'Tez yetkazib berish', feature3:'Qulay to‘lov',
+      productsTitle:'Ommabop mahsulotlar', allProducts:'Barchasi ↓', all:'Barchasi', smallBottles:'Kichik idishlar',
+      promoTitle:'Chegirmalar va promo-kodlar', promoText:'Buyurtma berishda promo-kodingizni kiriting.', usePromo:'Kodni ishlatish',
+      popularPromo:'🎉 Promo-kod', orderNow:'Buyurtma berish', cartTitle:'Savatcha', checkout:'Buyurtmani rasmiylashtirish →',
+      checkoutTitle:'Buyurtma berish', orderDetails:'1. Buyurtma tarkibi', customerInfo:'2. Mijoz ma’lumotlari',
+      name:'Ism-familiya *', phone:'Telefon raqami *', address:'Yetkazib berish manzili *', note:'Buyurtma izohi (ixtiyoriy)',
+      emptyBottle:'Bo‘sh idish', exchange:'Bo‘sh idishga almashtirish', noBottle:'Bo‘sh idishim yo‘q',
+      payment:'3. To‘lov turini tanlang', cash:'Naqd pul', card:'Plastik karta', promoCode:'4. Promo-kod (ixtiyoriy)',
+      apply:'Qo‘llash', deliveryNotice:'Yetkazib berish bepul. Buyurtma ma’lumotlari hozircha ushbu demo sahifada saqlanadi.',
+      confirmOrder:'Buyurtmani tasdiqlash', successTitle:'Buyurtma qabul qilindi!',
+      successText:'Buyurtmangiz demo rejimida yaratildi. Haqiqiy operatorga yuborish uchun backend ulanishi kerak.',
+      orderNumber:'Buyurtma raqami:', myOrders:'Buyurtmalarimga o‘tish', home:'Bosh sahifa', ordersTitle:'Buyurtmalarim',
+      ordersDescription:'Buyurtmalaringiz tarixi va holati.', trackingTitle:'Buyurtmani kuzatish', enterOrderNumber:'Buyurtma raqami',
+      trackButton:'Kuzatish', profileTitle:'Mening profilim', mineralCustomer:'Mineral Water mijozi', orderCount:'Buyurtmalar soni',
+      editProfile:'Profilni tahrirlash', birthdayTitle:'🎂 Tug‘ilgan kun', birthdayText:'Tug‘ilgan kun tabrigini olish uchun sanangizni kiriting va rozilik bering.',
+      birthDate:'Tug‘ilgan sana', birthdayConsent:'Tug‘ilgan kunimda Telegram orqali tabrik olishga roziman.', save:'Saqlash',
+      operatorTitle:'Operator bilan aloqa', messageOperator:'Telegram’da yozish', callOperator:'Operatorga qo‘ng‘iroq qilish',
+      courierTitle:'Yetkazib beruvchi paneli', courierNotice:'Bu namuna panel. Haqiqiy kuryer kirishi va buyurtma holatini o‘zgartirish uchun server va ruxsat tekshiruvi kerak.',
+      openCourier:'Panelni ko‘rish', courierDemo:'Demo panel: quyidagi holat o‘zgarishi faqat ushbu brauzerda ko‘rinadi.',
+      catalog:'Katalog', cart:'Savat', orders:'Buyurtmalar', profile:'Profil'
+    },
+    ru: {
+      heroTitle:'Чистая вода — прямо к вам!', heroText:'Доставляем питьевую воду объёмом 19 литров по городу Каган.',
+      location:'Город Каган', freeDelivery:'Бесплатная доставка', feature1:'Чистая и качественная', feature2:'Быстрая доставка', feature3:'Удобная оплата',
+      productsTitle:'Популярные товары', allProducts:'Все ↓', all:'Все', smallBottles:'Маленькие бутылки',
+      promoTitle:'Скидки и промокоды', promoText:'Введите промокод при оформлении заказа.', usePromo:'Ввести код',
+      popularPromo:'🎉 Промокод', orderNow:'Заказать', cartTitle:'Корзина', checkout:'Оформить заказ →',
+      checkoutTitle:'Оформление заказа', orderDetails:'1. Состав заказа', customerInfo:'2. Данные клиента',
+      name:'Имя и фамилия *', phone:'Номер телефона *', address:'Адрес доставки *', note:'Комментарий к заказу (необязательно)',
+      emptyBottle:'Пустая тара', exchange:'Обмен на пустую бутыль', noBottle:'У меня нет пустой бутыли',
+      payment:'3. Выберите способ оплаты', cash:'Наличные', card:'Банковская карта', promoCode:'4. Промокод (необязательно)',
+      apply:'Применить', deliveryNotice:'Доставка бесплатная. Пока данные заказа сохраняются только в демо-странице.',
+      confirmOrder:'Подтвердить заказ', successTitle:'Заказ принят!',
+      successText:'Заказ создан в демо-режиме. Для отправки оператору необходимо подключить сервер.',
+      orderNumber:'Номер заказа:', myOrders:'Мои заказы', home:'Главная', ordersTitle:'Мои заказы',
+      ordersDescription:'История и статус ваших заказов.', trackingTitle:'Отслеживание заказа', enterOrderNumber:'Номер заказа',
+      trackButton:'Отследить', profileTitle:'Мой профиль', mineralCustomer:'Клиент Mineral Water', orderCount:'Количество заказов',
+      editProfile:'Редактировать профиль', birthdayTitle:'🎂 День рождения', birthdayText:'Укажите дату рождения и согласитесь получать поздравление.',
+      birthDate:'Дата рождения', birthdayConsent:'Я согласен(на) получать поздравление в Telegram в день рождения.', save:'Сохранить',
+      operatorTitle:'Связаться с оператором', messageOperator:'Написать в Telegram', callOperator:'Позвонить оператору',
+      courierTitle:'Панель курьера', courierNotice:'Это демонстрационная панель. Для входа курьера и изменения статусов нужен сервер и проверка доступа.',
+      openCourier:'Открыть панель', courierDemo:'Демо-панель: изменения статуса видны только в этом браузере.',
+      catalog:'Каталог', cart:'Корзина', orders:'Заказы', profile:'Профиль'
     }
-  });
-
-  document.getElementById("name").placeholder = t.namePlaceholder;
-  document.getElementById("address").placeholder = t.addressPlaceholder;
-  document.getElementById("note").placeholder = t.notePlaceholder;
-
-  const payment = document.getElementById("payment");
-  t.paymentOptions.forEach((label, index) => {
-    payment.options[index].textContent = label;
-  });
-  updateCart();
-}
-
-function changeQty(amount) {
-  quantity = Math.max(1, quantity + amount);
-  document.getElementById("qty").textContent = quantity;
-}
-
-function addToCart() {
-  cart += quantity;
-  updateCart();
-}
-
-function updateCart() {
-  document.getElementById("cartQty").textContent = cart;
-  const subtotal = cart * PRICE;
-  const total = Math.max(0, subtotal - discount);
-  document.getElementById("total").textContent = total.toLocaleString(
-    lang === "ru" ? "ru-RU" : "uz-UZ"
-  );
-}
-
-function applyPromo() {
-  const code = document.getElementById("promo").value.trim().toUpperCase();
-  const message = document.getElementById("promoMessage");
-  const t = translations[lang];
-
-  // Demo promo code. Replace with server-side validation before launch.
-  if (code === "SUV10" && cart > 0) {
-    discount = Math.round(cart * PRICE * 0.10);
-    message.textContent = t.promoApplied;
-  } else {
-    discount = 0;
-    message.textContent = t.badPromo;
-  }
-  updateCart();
-}
-
-document.getElementById("orderForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  const t = translations[lang];
-  const result = document.getElementById("result");
-
-  if (cart < 1) {
-    alert(t.empty);
-    return;
-  }
-
-  const order = {
-    customer: document.getElementById("name").value.trim(),
-    phone: document.getElementById("phone").value.trim(),
-    birthDate: document.getElementById("birth").value,
-    birthdayGreetingConsent: document.getElementById("birthdayConsent").checked,
-    address: document.getElementById("address").value.trim(),
-    payment: document.getElementById("payment").value,
-    note: document.getElementById("note").value.trim(),
-    bottles: cart,
-    discount: discount,
-    total: Math.max(0, cart * PRICE - discount)
   };
 
-  result.textContent =
-    t.ready + "\n\n" +
-    (lang === "ru" ? "Имя: " : "Ism: ") + order.customer + "\n" +
-    (lang === "ru" ? "Телефон: " : "Telefon: ") + order.phone + "\n" +
-    (lang === "ru" ? "Адрес: " : "Manzil: ") + order.address + "\n" +
-    (lang === "ru" ? "Бутылей: " : "Idishlar soni: ") + order.bottles + "\n" +
-    (lang === "ru" ? "Оплата: " : "To‘lov: ") + order.payment + "\n" +
-    (lang === "ru" ? "Итого: " : "Jami: ") +
-    order.total.toLocaleString() + " so‘m";
+  let language = 'uz';
+  let cart = {};
+  let orders = [];
+  let payment = 'Naqd pul';
+  let discount = 0;
+  let filter = 'all';
+  let customer = { name:'', phone:'', address:'' };
 
-  result.classList.remove("hidden");
-});
+  const money = n => new Intl.NumberFormat('uz-UZ').format(n) + " so‘m";
+  const productName = p => language === 'uz' ? p.nameUz : p.nameRu;
+  const productDesc = p => language === 'uz' ? p.descUz : p.descRu;
+
+  function setLanguage(lang) {
+    language = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) el.textContent = translations[lang][key];
+    });
+    document.getElementById('langUz').classList.toggle('active', lang === 'uz');
+    document.getElementById('langRu').classList.toggle('active', lang === 'ru');
+    renderProducts();
+    renderCart();
+    renderCheckout();
+    renderOrders();
+    renderProfile();
+    renderCourier();
+  }
+
+  function filterProducts(type, button) {
+    filter = type;
+    document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+    renderProducts();
+  }
+
+  function renderProducts() {
+    const list = products.filter(p => filter === 'all' || p.type === filter);
+    document.getElementById('products').innerHTML = list.map(p => `
+      <article class="product">
+        <div class="product-image">${p.emoji}</div>
+        <h3>${productName(p)}</h3>
+        <div class="description">${productDesc(p)}</div>
+        <div class="price">${money(p.price)}</div>
+        <button class="primary wide" onclick="addToCart(${p.id})">＋ ${language === 'uz' ? 'Savatga qo‘shish' : 'В корзину'}</button>
+      </article>`).join('');
+  }
+
+  function addToCart(id) {
+    cart[id] = (cart[id] || 0) + 1;
+    updateCartBadge();
+    renderCart();
+    renderCheckout();
+  }
+
+  function changeQty(id, amount) {
+    cart[id] = (cart[id] || 0) + amount;
+    if (cart[id] <= 0) delete cart[id];
+    updateCartBadge();
+    renderCart();
+    renderCheckout();
+  }
+
+  function cartCount() {
+    return Object.values(cart).reduce((sum, n) => sum + n, 0);
+  }
+
+  function subtotal() {
+    return products.reduce((sum, p) => sum + p.price * (cart[p.id] || 0), 0);
+  }
+
+  function total() {
+    return Math.max(0, subtotal() - discount);
+  }
+
+  function updateCartBadge() {
+    const count = cartCount();
+    document.getElementById('cartCount').textContent = count + (language === 'uz' ? ' ta' : ' шт.');
+    document.getElementById('navCartBadge').textContent = count;
+    document.getElementById('navCartBadge').classList.toggle('hidden', count === 0);
+  }
+
+  function renderCart() {
+    const items = products.filter(p => cart[p.id]);
+    const container = document.getElementById('cartItems');
+    if (!items.length) {
+      container.innerHTML = `<div class="empty">🛒<p>${language === 'uz' ? 'Savatchangiz hozircha bo‘sh.' : 'Ваша корзина пока пуста.'}</p></div>`;
+      document.getElementById('cartSummary').innerHTML = '';
+      updateCartBadge();
+      return;
+    }
+
+    container.innerHTML = items.map(p => `
+      <div class="cart-row">
+        <div class="cart-emoji">${p.emoji}</div>
+        <div class="cart-info">
+          <b>${productName(p)}</b>
+          <small>${money(p.price)} × ${cart[p.id]}</small>
+          <div class="quantity">
+            <button onclick="changeQty(${p.id},-1)">−</button>
+            <b>${cart[p.id]}</b>
+            <button onclick="changeQty(${p.id},1)">＋</button>
+          </div>
+        </div>
+        <b>${money(p.price * cart[p.id])}</b>
+        <button class="remove" onclick="changeQty(${p.id},-${cart[p.id]})">×</button>
+      </div>`).join('');
+
+    document.getElementById('cartSummary').innerHTML = `
+      <div class="total-line"><span>${language === 'uz' ? 'Mahsulotlar jami' : 'Сумма товаров'}</span><strong>${money(subtotal())}</strong></div>
+      <div class="total-line"><span>${language === 'uz' ? 'Yetkazib berish' : 'Доставка'}</span><strong style="color:var(--green)">${language === 'uz' ? 'Bepul' : 'Бесплатно'}</strong></div>
+      ${discount ? `<div class="total-line"><span>${language === 'uz' ? 'Chegirma' : 'Скидка'}</span><strong>−${money(discount)}</strong></div>` : ''}
+      <div class="total-line grand-total"><span>Jami</span><strong>${money(total())}</strong></div>`;
+    updateCartBadge();
+  }
+
+  function renderCheckout() {
+    const items = products.filter(p => cart[p.id]);
+    document.getElementById('checkoutItems').innerHTML = items.length
+      ? items.map(p => `<div class="total-line"><span>${productName(p)} × ${cart[p.id]}</span><b>${money(p.price * cart[p.id])}</b></div>`).join('')
+      : `<p>${language === 'uz' ? 'Savatcha bo‘sh. Avval mahsulot tanlang.' : 'Корзина пуста. Сначала выберите товар.'}</p>`;
+    document.getElementById('checkoutTotal').textContent = (language === 'uz' ? 'Jami: ' : 'Итого: ') + money(total());
+  }
+
+  function choosePayment(value, button) {
+    payment = value;
+    document.querySelectorAll('.payment-option').forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+  }
+
+  function applyPromo() {
+    const code = document.getElementById('promoInput').value.trim().toUpperCase();
+    const msg = document.getElementById('promoMessage');
+    if (code === 'SUV10' && subtotal() > 0) {
+      discount = Math.round(subtotal() * 0.10);
+      msg.textContent = language === 'uz' ? 'SUV10 qo‘llandi: 10% demo chegirma.' : 'SUV10 применён: демо-скидка 10%.';
+      msg.style.color = 'var(--green)';
+    } else {
+      discount = 0;
+      msg.textContent = language === 'uz' ? 'Promo-kod noto‘g‘ri yoki savatcha bo‘sh.' : 'Промокод неверный или корзина пуста.';
+      msg.style.color = '#bd3540';
+    }
+    renderCart();
+    renderCheckout();
+  }
+
+  function goCheckout() {
+    if (!cartCount()) {
+      alert(language === 'uz' ? 'Avval savatga mahsulot qo‘shing.' : 'Сначала добавьте товары в корзину.');
+      showPage('homePage');
+      return;
+    }
+    renderCheckout();
+    showPage('checkoutPage');
+  }
+
+  document.getElementById('orderForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (!cartCount()) {
+      alert(language === 'uz' ? 'Savatcha bo‘sh.' : 'Корзина пуста.');
+      return;
+    }
+
+    customer.name = document.getElementById('customerName').value.trim();
+    customer.phone = document.getElementById('customerPhone').value.trim();
+    customer.address = document.getElementById('customerAddress').value.trim();
+
+    const id = 'MW-' + String(1000 + orders.length + 1);
+    const order = {
+      id,
+      date: new Date().toLocaleString(),
+      items: products.filter(p => cart[p.id]).map(p => ({
+        name: productName(p), qty: cart[p.id], price: p.price
+      })),
+      total: total(),
+      payment,
+      address: customer.address,
+      name: customer.name,
+      phone: customer.phone,
+      note: document.getElementById('customerNote').value.trim(),
+      status: 'Qabul qilindi'
+    };
+
+    orders.unshift(order);
+    document.getElementById('newOrderNumber').textContent = id;
+    cart = {};
+    discount = 0;
+    updateCartBadge();
+    renderCart();
+    renderOrders();
+    renderProfile();
+    renderCourier();
+    showPage('successPage');
+  });
+
+  function statusClass(status) {
+    if (status === 'Yetkazildi') return 'done';
+    if (status === 'Yo‘lda') return 'road';
+    return '';
+  }
+
+  function statusText(status) {
+    const ru = { 'Qabul qilindi':'Принят', 'Tayyorlanmoqda':'Готовится', 'Yo‘lda':'В пути', 'Yetkazildi':'Доставлен' };
+    return language === 'uz' ? status : (ru[status] || status);
+  }
+
+  function renderOrders() {
+    const list = document.getElementById('ordersList');
+    if (!orders.length) {
+      list.innerHTML = `<div class="empty">📦<p>${language === 'uz' ? 'Hozircha buyurtmalar yo‘q.' : 'Заказов пока нет.'}</p></div>`;
+      return;
+    }
+    list.innerHTML = orders.map(o => `
+      <div class="order-card">
+        <div class="order-head"><b>#${o.id}</b><span class="status ${statusClass(o.status)}">${statusText(o.status)}</span></div>
+        <p class="muted">${o.date}</p>
+        <div class="total-line"><span>${o.items.reduce((s,i)=>s+i.qty,0)} ${language === 'uz' ? 'ta mahsulot' : 'тов.'}</span><b>${money(o.total)}</b></div>
+        <button class="secondary wide" onclick="openTracking('${o.id}')">${language === 'uz' ? 'Buyurtmani kuzatish' : 'Отследить заказ'}</button>
+      </div>`).join('');
+  }
+
+  function openTracking(id) {
+    document.getElementById('trackNumber').value = id;
+    trackOrder();
+    showPage('trackingPage');
+  }
+
+  function trackOrder() {
+    const id = document.getElementById('trackNumber').value.trim().toUpperCase();
+    const order = orders.find(o => o.id === id);
+    const result = document.getElementById('trackingResult');
+    if (!order) {
+      result.innerHTML = `<p class="muted">${language === 'uz' ? 'Bu demo ichida bunday buyurtma topilmadi.' : 'В демо не найден такой заказ.'}</p>`;
+      return;
+    }
+
+    const steps = ['Qabul qilindi','Tayyorlanmoqda','Yo‘lda','Yetkazildi'];
+    const active = steps.indexOf(order.status);
+    result.innerHTML = `
+      <div class="order-card">
+        <div class="order-head"><b>#${order.id}</b><span class="status ${statusClass(order.status)}">${statusText(order.status)}</span></div>
+        <p class="muted">${order.address}</p>
+        ${steps.map((s,i)=>`<div class="courier-step ${i <= active ? 'current' : ''}"><span class="step-dot">${i < active ? '✓' : i+1}</span><span>${statusText(s)}</span></div>`).join('')}
+        <div class="total-line"><b>${language === 'uz' ? 'Buyurtma jami' : 'Итого'}</b><b>${money(order.total)}</b></div>
+      </div>`;
+  }
+
+  function renderProfile() {
+    document.getElementById('profileName').textContent = customer.name || (language === 'uz' ? 'Mijoz' : 'Клиент');
+    document.getElementById('profilePhone').textContent = customer.phone || '—';
+    document.getElementById('profileAddress').textContent = customer.address || '—';
+    document.getElementById('profileOrderCount').textContent = orders.length + (language === 'uz' ? ' ta' : '');
+  }
+
+  function editProfile() {
+    showPage('checkoutPage');
+    document.getElementById('customerName').value = customer.name;
+    document.getElementById('customerPhone').value = customer.phone;
+    document.getElementById('customerAddress').value = customer.address;
+  }
+
+  function saveBirthday() {
+    const date = document.getElementById('birthDate').value;
+    const consent = document.getElementById('birthdayConsent').checked;
+    const msg = document.getElementById('birthdayMessage');
+    if (!date || !consent) {
+      msg.textContent = language === 'uz'
+        ? 'Sanani kiriting va tabrik olishga rozilik belgilang.'
+        : 'Укажите дату и подтвердите согласие на поздравления.';
+      return;
+    }
+    msg.textContent = language === 'uz'
+      ? 'Rozilik belgilandi. Avtomatik Telegram tabrigi uchun backend va bot ulanishi kerak.'
+      : 'Согласие сохранено в демо. Для автоматического поздравления нужен сервер и бот.';
+  }
+
+  function renderCourier() {
+    const container = document.getElementById('courierOrders');
+    if (!orders.length) {
+      container.innerHTML = `<div class="empty">🚚<p>${language === 'uz' ? 'Hozircha buyurtmalar yo‘q.' : 'Заказов пока нет.'}</p></div>`;
+      return;
+    }
+    const statuses = ['Qabul qilindi','Tayyorlanmoqda','Yo‘lda','Yetkazildi'];
+    container.innerHTML = orders.map(o => `
+      <div class="order-card">
+        <div class="order-head"><b>#${o.id}</b><span class="status ${statusClass(o.status)}">${statusText(o.status)}</span></div>
+        <p><b>${o.name}</b></p>
+        <p class="muted">${o.phone}<br>${o.address}</p>
+        <div class="total-line"><span>${language === 'uz' ? 'Jami' : 'Итого'}</span><b>${money(o.total)}</b></div>
+        <div class="field">
+          <label>${language === 'uz' ? 'Holatni o‘zgartirish' : 'Изменить статус'}</label>
+          <select onchange="changeStatus('${o.id}',this.value)">
+            ${statuses.map(s => `<option value="${s}" ${s===o.status?'selected':''}>${statusText(s)}</option>`).join('')}
+          </select>
+        </div>
+      </div>`).join('');
+  }
+
+  function changeStatus(id, status) {
+    const order = orders.find(o => o.id === id);
+    if (order) order.status = status;
+    renderOrders();
+    renderCourier();
+  }
+
+  function showPage(id) {
+    document.querySelectorAll('main section').forEach(section => section.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+
+    document.querySelectorAll('.nav-button').forEach(button => {
+      button.classList.toggle('active', button.dataset.page === id ||
+        (id === 'checkoutPage' && button.dataset.page === 'cartPage') ||
+        (id === 'successPage' && button.dataset.page === 'ordersPage') ||
+        (id === 'trackingPage' && button.dataset.page === 'ordersPage') ||
+        (id === 'courierPage' && button.dataset.page === 'profilePage'));
+    });
+
+    if (id === 'cartPage') renderCart();
+    if (id === 'checkoutPage') renderCheckout();
+    if (id === 'ordersPage') renderOrders();
+    if (id === 'profilePage') renderProfile();
+    if (id === 'courierPage') renderCourier();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderProducts();
+  renderCart();
+  renderCheckout();
+  renderOrders();
+  renderProfile();
+  renderCourier();
 </script>
 </body>
 </html>
