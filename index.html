@@ -948,44 +948,78 @@
     showPage('checkoutPage');
   }
 
-  document.getElementById('orderForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    if (!cartCount()) {
-      alert(language === 'uz' ? 'Savatcha bo‘sh.' : 'Корзина пуста.');
-      return;
+  document.getElementById('orderForm').addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  if (!cartCount()) {
+    alert(language === 'uz' ? 'Savatcha bo‘sh.' : 'Корзина пуста.');
+    return;
+  }
+
+  customer.name = document.getElementById('customerName').value.trim();
+  customer.phone = document.getElementById('customerPhone').value.trim();
+  customer.address = document.getElementById('customerAddress').value.trim();
+
+  const id = 'MW-' + String(1000 + orders.length + 1);
+
+  const order = {
+    id,
+    date: new Date().toLocaleString(),
+    items: products.filter(p => cart[p.id]).map(p => ({
+      name: productName(p),
+      qty: cart[p.id],
+      price: p.price
+    })),
+    total: total(),
+    payment,
+    address: customer.address,
+    name: customer.name,
+    phone: customer.phone,
+    note: document.getElementById('customerNote').value.trim(),
+    status: 'Qabul qilindi'
+  };
+
+  try {
+    const response = await fetch(
+      'https://empty-mud-f71a.anvarshomurodov01.workers.dev/api/orders',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+      throw new Error('Backend xatosi');
     }
 
-    customer.name = document.getElementById('customerName').value.trim();
-    customer.phone = document.getElementById('customerPhone').value.trim();
-    customer.address = document.getElementById('customerAddress').value.trim();
-
-    const id = 'MW-' + String(1000 + orders.length + 1);
-    const order = {
-      id,
-      date: new Date().toLocaleString(),
-      items: products.filter(p => cart[p.id]).map(p => ({
-        name: productName(p), qty: cart[p.id], price: p.price
-      })),
-      total: total(),
-      payment,
-      address: customer.address,
-      name: customer.name,
-      phone: customer.phone,
-      note: document.getElementById('customerNote').value.trim(),
-      status: 'Qabul qilindi'
-    };
-
     orders.unshift(order);
+
     document.getElementById('newOrderNumber').textContent = id;
+
     cart = {};
     discount = 0;
+
     updateCartBadge();
     renderCart();
     renderOrders();
     renderProfile();
     renderCourier();
+
     showPage('successPage');
-  });
+
+  } catch (error) {
+    alert(
+      language === 'uz'
+        ? 'Buyurtmani yuborishda xatolik yuz berdi. Internetni tekshiring.'
+        : 'Ошибка отправки заказа. Проверьте интернет.'
+    );
+  }
+});
 
   function statusClass(status) {
     if (status === 'Yetkazildi') return 'done';
